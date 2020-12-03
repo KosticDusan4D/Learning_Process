@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vezbanje CSS-a</title>
+    <style>
+        h1{
+            color: darkred;
+        }
+        h3{
+            color:red;
+        }
+        p{
+            color: purple;
+        }
+        img{
+            width: 400px;
+            height: 300px;
+        }
+        a{
+            color:orangered;
+        }
+        html{
+            background-color: burlywood;
+            font: arial;
+            font-size: 20px;
+        }
+        .centralnoPoravnan {
+            text-align: center;
+        }
+        .desnoFont24{
+            text-align: right;
+            font-size: 24px;
+        }
+
+        .isprekidaniOkvir {
+            border: 2px dotted black;
+        }
+        #centZelComicSans{
+            text-align: center;
+            color: green;
+            font-family: 'Comic Sans MS', cursive
+        }
+        a:hover{
+            color: yellow;
+        }
+        a:visited{
+        color:green;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Jedan naslov vezbanje
+    </h1>
+    <h3>
+        Podnaslov vezbanje
+    </h3>
+    <p>
+        Ovo je paragraf prvi vezba.
+    </p>
+    <p class="centralnoPoravnan desnoFont24">
+        Ovo je paragraf drugi vezba.
+    </p>
+    <p class="centralnoPoravnan desnoFont24">
+        Ovo je paragraf treci vezba.
+    </p>
+    <img class="isprekidaniOkvir" src="https://loveserbia.rs/wp-content/uploads/2020/07/serbia-4943923_1920.jpg" alt="Slika zalaska sunca">
+    <hr>
+    <br>
+
+    Posetite sajt KupujemProdajem klikom <a href="https://www.kupujemprodajem.com/" target="_blank">ovde</a>.
+
+    <h1 class="centralnoPoravnan">
+        Ovo je jos jedan naslov
+    </h1>
+
+    <h1 id="centZelComicSans">
+        Ovo je treci naslov
+    </h1>
+</body>
+</html>

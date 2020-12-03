@@ -1,0 +1,13 @@
+body{
+    background-color: darkorange;
+}
+
+th{
+    border:2px red solid
+}
+td{
+    border: 2px black solid;
+}
+#prvired{
+    color: red;
+}
