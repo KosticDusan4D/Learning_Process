@@ -1,0 +1,18 @@
+table, th, td{
+    border: solid 1px black
+}
+.zutired{
+    background-color: yellow;
+}
+.zutakolona{
+    background-color: yellow;
+}
+#tabela1 tr:nth-child(odd){
+    font-style: italic ;
+}
+#tabela2 tr:nth-child(even):hover{
+    background-color: yellow;
+}
+#tabela2 tr:nth-child(3n){
+    color: blue;
+}
