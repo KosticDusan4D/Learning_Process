@@ -1,0 +1,64 @@
+p{
+    background-color: darkgrey;
+}
+
+div, p, #float{
+    position: relative;
+    top: 250px;
+}
+
+/* 
+    float - redjanje elemenata
+    1) Kada se redjaju elementi preko floata mora da postoji roditeljski element za te elemente koji se redjaju. (konkretno mi redjavo ovde p elemente unutar div#float)
+
+    2) Kada se redjaju elementi iz float-a, oni se "cupaju" iz roditeljskog elementa, i on postane prazan!
+    Resenje: RODITELJSKOG elementu dodati svojstvo
+    overflow: hidden
+*/
+#float p{
+    float: right;
+    width: 250px;
+    margin: 20px;
+}
+
+#float p:first-child{
+    float: left;
+}
+
+#float{
+    overflow: hidden;
+}
+
+li{
+    background-color:gray;
+    
+}
+
+a{
+    text-decoration: unset;
+    color: white;
+}
+
+#meni li{
+    box-sizing: border-box;
+    float: left;
+    width: 25%;
+    height: 50px;
+    text-align: center;
+    border-right: 2px solid white;
+}
+
+#meni{
+    overflow: hidden;
+}
+
+li:hover{
+    background-color: red;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+}

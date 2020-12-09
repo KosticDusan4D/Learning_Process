@@ -1,0 +1,80 @@
+#div1 {
+    background-color: red;
+    width: 400px;
+    height: 50px;
+    position: relative; /*pomeranje u odnosu na normalnu poziciju*/
+    top: 30px;
+    left: 60px;
+}
+
+.news {
+    background-color: chocolate;
+    width: 600px;
+    height: 300px;
+    position: relative;
+    left: 60px;
+    top: 80px;
+}
+
+.news img {
+    position: absolute; /* Pomeranje u odnosu na roditeljski element koji ima podesenu poziciju */
+    top: 15px;
+    left: 15px;
+    width: 300px;
+}
+
+.news h5{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0;
+}
+
+header{
+    background: url(pizza.jpg) 
+    no-repeat center center fixed;
+background-size: cover;
+    height: 150px;
+    position: relative;
+}
+
+.pizza{
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+footer{
+    background-color: cyan;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+}
+
+*{
+    margin: 0;
+}
+
+.prviParagraf{
+    width: 500px;
+    height: 250px;
+    background-color: lightgrey;
+    position: relative;
+    left: 250px;
+    z-index: 2;
+}
+
+.drugiParagraf{
+    width: 500px;
+    height: 250px;
+    background-color: lightgreen;
+    position: relative;
+    left: 450px;
+    bottom: 100px;
+    z-index: 1;
+}
