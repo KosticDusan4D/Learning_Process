@@ -1,13 +1,16 @@
-
-/*Prvo sta moramo da radimo*/
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
+/*
 body{
-    background-color: lightgrey;
+    position: relative;
+}
+*/
+
+img{
+    height: 300px;
 }
 
 .row{
@@ -17,20 +20,18 @@ body{
 
 [class*="col-"]{
     float: left;
-    border: 1px solid red;
 }
 
 /*DIZAJN ZA MOBILNE TELEFONE*/
 
-@media only screen and (max-width: 425px){
+@media only screen and (max-width: 600px){
     [class*="col-"]{
         width: 100%;
-        border: 1px solid blue;
     }
 }
 
 /*DIZAJN ZA TABLETE*/
-
+/*
 @media only screen and (min-width: 426px) and (max-width: 768px){
     .col-t-1{
         width: 8.33%;
@@ -69,10 +70,11 @@ body{
         width: 100%;
     }
 }
+*/
 
 /*DIZAJN ZA DESKTOP UREDJAJE*/
 
-@media only screen and (min-width: 769px){
+@media only screen and (min-width: 601px){
     .col-1{
         width: 8.33%;
     }
@@ -112,26 +114,71 @@ body{
     
 }
 
-
-
-
-/*Boje sekcija*/
-header{
-    background-color: lightseagreen;
-}
-
 nav{
-    background-color: lightskyblue;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    
 }
 
-article{
-    background-color: mediumaquamarine;
+nav ul{
+    overflow: hidden;
+    background-color: rgb(95, 202, 202);
+    
 }
 
-aside{
-    background-color: mediumturquoise;
+nav ul li{
+    text-align: left;
+    width: 100%;
+}
+
+.border{
+    border-top: 2px solid cyan;
+    border-bottom: 2px solid cyan;
+}
+
+nav ul li a{
+    
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    width: 100%;
+}
+
+nav ul li a:hover{
+    background-color: darkcyan;
+}
+
+header{
+    padding: 5px;
+    text-align: center;
+    background-color: cyan;
+}
+
+aside p{
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+    background-color: rgb(144, 243, 243);
+}
+
+article h3{
+    padding: 10px;
+    text-align: left;
+    background-color: cyan;
+}
+
+article p{
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+    background-color: rgb(144, 243, 243);
+    height: 130px;
+    font-style: italic;
 }
 
 footer{
-    background-color: teal;
+    padding: 5px;
+    text-align: center;
+    background-color: cyan;
 }
