@@ -3,11 +3,10 @@
     margin: 0;
     padding: 0;
 }
-/*
+
 body{
     position: relative;
 }
-*/
 
 img{
     height: 300px;
@@ -22,11 +21,13 @@ img{
     float: left;
 }
 
+
 /*DIZAJN ZA MOBILNE TELEFONE*/
 
 @media only screen and (max-width: 600px){
     [class*="col-"]{
         width: 100%;
+        text-align: center;
     }
 }
 
@@ -111,6 +112,10 @@ img{
     .col-12{
         width: 100%;
     }
+    nav ul li{
+        text-align: left;
+        width: 100%;
+    }
     
 }
 
@@ -118,19 +123,18 @@ nav{
     position: relative;
     top: 0px;
     width: 100%;
-    
 }
 
 nav ul{
     overflow: hidden;
     background-color: rgb(95, 202, 202);
-    
 }
-
+/*  PREBACIVAO SAM DA VIDIM DA LI MOGU ODVOJENE KOMANDE ZA ZASEBAN QUERY DA RADE... I RADE
 nav ul li{
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
+*/
 
 .border{
     border-top: 2px solid cyan;
@@ -143,6 +147,8 @@ nav ul li a{
     padding: 10px;
     display: block;
     width: 100%;
+    color: black;
+    font-weight: bolder;
 }
 
 nav ul li a:hover{
@@ -152,14 +158,19 @@ nav ul li a:hover{
 header{
     padding: 5px;
     text-align: center;
-    background-color: cyan;
+    background-color: #00ffff;
+}
+
+aside{
+    background: rgb(0,255,255);
+    background: linear-gradient(180deg, rgba(0,255,255,1) 0%, rgba(255,255,255,1) 100%); 
 }
 
 aside p{
     padding: 10px;
     font-size: 20px;
     text-align: left;
-    background-color: rgb(144, 243, 243);
+    height: 56px;
 }
 
 article h3{
@@ -172,7 +183,8 @@ article p{
     padding: 10px;
     font-size: 20px;
     text-align: left;
-    background-color: rgb(144, 243, 243);
+    background: rgb(0,255,255);
+    background: linear-gradient(180deg, rgba(0,255,255,1) 0%, rgba(255,255,255,1) 100%); 
     height: 130px;
     font-style: italic;
 }
