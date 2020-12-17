@@ -111,6 +111,24 @@
         echo "<br>";
         echo "<br>";
 
+    //Zadatak 10
+        $cena = 15000;
+        $popust = 20;
+        $x = 100 * $cena / (100 - $popust);
+        echo $x;
+        echo "<br>";
+        echo "<br>";
+
+    //Zadatak 11
+        //Za razlomljene brojeve: floor(...) vraca donji ceo deo, a ceil(...) vraca gornji ceo deo
+        $n = 14;
+        $neiskorisceno = $n % 3;
+        $brojDana = floor($n /3);
+        echo "<br>";
+        echo $neiskorisceno;
+        echo "&nbsp;";
+        echo $brojDana;
+
         ?>
     </p>
 </body>
