@@ -7,39 +7,42 @@
 </head>
 <body>
 
-    <div>
-        Zdravo kako si?
-    </div>
-
-    <div>
-        Ucim PHP
-        <?php
-            echo ":)"
-        ?>
-    </div>
-
-    <p>Ovo je prvi paragraf</p>
-
-    <article>
-    Da li je broj 3 paran?
     <?php
-        $br = 3;
-        if($br % 2 == 0)
+
+     //20. ZADATAK Učitati dva cela broja i ispitati da li je veći od njih paran. 
+        
+        $br1 = 2;
+        $br2 = 0;
+
+        if($br1 > $br2)
         {
-            echo "Broj $br je paran broj";
+            echo "Broj $br1 je veci";
+            if($br1 % 2 == 0)
+            {
+                echo " i paran je";
+            }
+            else
+            {
+                echo " i neparan je";
+            }
+        }
+        elseif ($br2 > $br1)
+        {
+            echo "Broj $br2 je veci";
+            if($br2 % 2 == 0)
+            {
+                echo " i paran je";
+            }
+            else
+            {
+                echo " i neparan je";
+            }
         }
         else
         {
-            echo "Broj $br nije paran broj";
+            echo "Brojevi $br1 i $br2 su jednaki";
         }
-    ?>
-    </article>
 
-    <?php
-        $boja = "purple";
-
-        echo "<p style='color: $boja'>Neki tekst</p>";
-    
     ?>
 
 </body>
