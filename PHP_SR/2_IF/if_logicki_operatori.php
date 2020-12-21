@@ -4,7 +4,7 @@
     $br2 = 6;
     $br3 = 7;
 
-    // && (Logicko i) - kada imamamo, svi izrazi moraju biti tacni da bi izlaz bio true
+    // && (Logicko i) - kada imamo, svi izrazi moraju biti tacni da bi izlaz bio true
     // true && true = true - Jedino je true kad su oba true
     // false && true = false
     // false && false = false
