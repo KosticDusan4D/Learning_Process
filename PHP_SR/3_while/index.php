@@ -314,7 +314,55 @@
             }
             $d++;
         }
-        echo "<p>$deljiv</p><hr>"
+        echo "<p>$deljiv</p><hr>";
+
+        //12. ZADATAK Odrediti da li je dati prirodan broj n prost. Broj je prost ako je deljiv samo sa jedan i sa samim sobom.
+
+        //1. NACIN
+        $n = 12;
+        $br = 1;
+        $deljivi = 0;
+
+        while ($br <= $n)
+        {
+            if($n % $br == 0)
+            {
+                $deljivi++;
+            }
+            $br++;
+        }
+
+        if ($deljivi == 2)
+        {
+            echo "<p>Broj je prost</p>";
+        }
+        else
+        {
+            echo "<p>Broj nije prost</p>";
+        }
+
+        //2. NACIN
+        $n = 3;
+        $br = 2;
+        $prost = true; //ovo je flag, koji se koristi da bi se pokazalo nesto
+
+        while($br <= $n/2)
+        {
+            if($n % $br == 0)
+            {
+                $prost = false;
+                break; //Prvi put kad ispuni uslov prekida dalje ispitivanje
+            }
+            $br++;
+        }
+        if($prost == true)//Moze i bez ==true jer je vec definisano da je true
+        {
+            echo "<p>Broj je prost</p>";
+        }
+        else
+        {
+            echo "<p>Broj nije prost</p>";
+        }
 
     ?>
     
