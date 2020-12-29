@@ -402,19 +402,171 @@
     echo "<p style='font-weight: bold;'>17. zadatak</p>";
 
     /*
-    strpos($str1, $str2) - Funkcija koja "trazi" $str2 u $str1.
+    strpos($str1, $str2) - Funkcija koja "trazi" $str2 unutar $str1.
     Rezultat koji se vraca:
     1) Ako se $str2 nalazi u $str1 tada funkcija vraca POZICIJU prvog pojavljivanja
     (0, 1, 2, 3, 4,....) - NEKI CEO BROJ
     2) Ako se $str2 ne nalazi u $str1, tada funkcija vraca FALSE - LOGICKU VREDNOST
-    */
-    /*Kako pitati da li se u stringu $str pojavljuje karakter "a"?
-    */
     
-    if (strrpos ("Ponedeljak", "P") !== false)
+    Kako pitati da li se u stringu $str pojavljuje karakter "a"?
+    if(strpos($str, 'a') !== false)
+    */
+    /* PRIMER
+    if (strpos ("Ponedeljak", "P") !== false)
     {
         echo "Nalazi se string 'P'";
     }
+    */
+
+    // 17. ZADATAK
+
+    $brojSadrziA = 0;
+
+    for($i = 0; $i < count($imena); $i++)
+    {
+        $ime = $imena[$i];
+        if(strpos($ime, "a") !== false)
+        {
+            $brojSadrziA++;
+        }
+    }
+    echo "<p>Broj imena koja sadrze slovo 'a' je: $brojSadrziA</p>";
+
+                echo "<hr>";
+
+    // 18. ZADATAK Odrediti broj elemenata u nizu stringova koji počinju na slovo 'a' ili 'A'.
+    echo "<p style='font-weight: bold;'>18. zadatak</p>";
+
+    $brojPocinjuA = 0;
+
+    for($i = 0; $i < count($imena); $i++)
+    {
+        $ime = $imena[$i];
+        // if(strpos($ime, 'a') === 0 || strpos($ime, 'A') === 0)
+        if($imena[$i][0] == 'a' || $imena[$i][0] == 'A')
+        //moze oba resenja
+        {
+            $brojPocinjuA++;
+        }
+    }
+    echo "<p>Broj imena koja pocinju na slovo 'A' ili 'a' je: $brojPocinjuA</p>";
+
+                echo "<hr>";
+
+    // 19. ZADATAK Na osnovu celobrojnog niza $a[0], $a[1], … formirati niz $b[0], $b[1], ... koji sadrži samo pozitivne brojeve.
+    echo "<p style='font-weight: bold;'>19. zadatak</p>";
+
+    $a = array(1, 2, 3, 4, 11, 15, -5, -6, -7, -8);
+    $b = array();
+    $broj = 0;
+   
+
+    for ($i = 0; $i < count($a); $i++)
+    {
+        if($a[$i] > 0)
+        {
+            $b[$broj++] = $a[$i]; // bolje kao Stefan bez $broj $b[] = $a[$i];
+        }
+    }
+    echo "<p>";
+    echo implode(" ,", $b);
+    echo "</p>";
+    var_dump($b);
+
+                echo "<hr>";
+
+    /*20. ZADATAK Dati su nizovi 
+    $a[0], $a[1], …, $a[n - 1] i  
+    $b[0], $b[1], …, $b[n - 1]. 
+    Formirati niz $c[0], $c[1], …, $c[2n – 1] čiji su elementi 
+    $a[0], $b[0], $a[1], $b[1], …, $a[n - 1], $b[n - 1].   */
+    echo "<p style='font-weight: bold;'>20. zadatak</p>";
+    
+
+    // MOJE LOSE RESENJE
+    $a = array(-5, 10, 15, 20, 25, 32, 45);
+    $b = array(6, 11, 16, 21, 26, 41, 57);
+    $c = array();
+    $n = 3;
+    $broj = 0;
+
+    for ($i = 0; $i < count($a); $i+=2)
+    {
+        if($a[$i] > 0 )
+        {
+            $c[($n - $broj++)] = $a[$i];
+        }
+    }
+
+    for ($i = 1; $i < count($a); $i+=2)
+    {
+        if($b[$i] > 0 )
+        {
+            $c[($n - $broj++)] = $b[$i];
+        }
+    }
+
+    echo "<p>";
+    echo implode(" ,", $c);
+    echo "</p>";
+    var_dump($c);
+
+    echo "<hr>";
+
+    //RESENJE STEFANOVO DOBRO
+
+    $a = array(-5, 10, 15, 20, 25, 32, 45);
+    $b = array(6, 11, 16, 21, 26, 41, 57);
+    $c = array();
+    
+    for ($i = 0; $i < count($a); $i++)
+    {
+        $c[] = $a[$i];
+        $c[] = $b[$i];
+    }
+
+    //20. 1 KADA SU RAZLICITE DUZINE NIZOVI
+
+    $a = array(-5, 10, 15, 20, 25, 32, 45, 55, 61, 71);
+    $b = array(6, 11, 16, 21, 26, 41, 57);
+    $c = array();
+    $n = count($a);
+    $m = count ($b);
+
+    if($n < $m)
+    {
+        $k = $n;
+    }
+    else
+    {
+        $k = $m;
+    }
+    
+    for ($i = 0; $i < $k; $i++) // 1. petlja
+    {
+        $c[] = $a[$i];
+        $c[] = $b[$i];
+    }
+
+    for ($i = $k; $i < count($a); $i++) // 2. petlja
+    {
+        $c[] = $a[$i];
+    }
+    for ($i = $k; $i < count($b); $i++) // 3. petlja
+    {
+        $c[] = $b[$i];
+    }
+
+    var_dump($c);
+
+    // 1. slucaj: Niz a ima vise elemenata od niza b
+    // Izvrsava se petlja 1 i petlja 2
+
+    // 2. slucaj: Niz b ima vise elemenata od niza a
+    // Izvrsava se petlja 1 i petlja 3
+
+    // 3. slucaj: Niz a i b imaju isti broj elemenata
+    // Izvrsava se samo 1. petlja
 
 
 ?>
