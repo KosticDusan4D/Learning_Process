@@ -63,8 +63,8 @@
                     <td>$this->godinaIzdanja</td>
                 </tr>
                 <tr>
-                    <td>Ocena filma:</td>
-                    <td>$this->ocene</td>
+                    <td>Ocene filma:</td>
+                    <td>" . implode(" ,",$this->ocene) . "</td>
                 </tr>
             </table>
             ";
@@ -72,11 +72,11 @@
 
         function prosek(){
             $suma = 0;
-            for($i=0; $i<count(getOcene()); $i++){
-                $suma += $o[$i];
+            foreach($this->ocene as $ocena){
+                $suma += $ocena;
             }
-            $prosek = $suma/count(getOcene());
-            return $prosek;
+            return $suma/count($this->ocene);
+
         }
     }
 
