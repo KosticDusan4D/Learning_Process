@@ -43,6 +43,7 @@
 
     $v = new Vozilo("bela", "dron");
     $v->voziVozilo();
+    // $v->voziAutomobil(); // Iz natklase ne mozemo pristupiti osobina potklase, tj roditelj ne nasledjuje osobine svog deteta, samo obratno.
     echo "<hr>";
 
     $a = new Automobil("zelena", "automobil");
