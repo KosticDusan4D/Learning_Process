@@ -8,6 +8,9 @@
 
         private static $defaultBrGod; //static se dodaje, a moze biti i private,protected ili public
         private static $podGodKamata;
+        private static $brojKredita = 0;
+
+        public const DEFAULT_OSNOVICA = 1000;
     
         //Konstruktor
         public function __construct($godKamata, $osnovica, $brGod, $tip){
@@ -15,6 +18,12 @@
             $this->setOsnovica($osnovica);
             $this->setBrGod($brGod);
             $this->setTip($tip);
+            self::$brojKredita++;
+        }
+
+        //Destruktor
+        public function __destruct(){
+            self::$brojKredita--;
         }
 
         //Seteri
@@ -30,11 +39,11 @@
             }
         }
         public function setOsnovica($osnovica){
-            if($osnovica>0){
+            if($osnovica>self::DEFAULT_OSNOVICA){
                 $this->osnovica = $osnovica;
             }
             else{
-                $this->osnovica = 0;
+                $this->osnovica = self::DEFAULT_OSNOVICA;
             }
         }
         public function setBrGod($brGod){
@@ -86,6 +95,9 @@
         }
         public static function getPodGodKamata(){
             return self::$podGodKamata;
+        }
+        public static function getBrojKredita(){
+            return self::$brojKredita;
         }
 
         //Metode
