@@ -1,6 +1,6 @@
 <?php
 
-    class Kredit{
+     abstract class Kredit{ // abstract se dodaje ukoliko je klasa apstraktna
         protected $godKamata;
         protected $osnovica;
         protected $brGod;
@@ -108,9 +108,20 @@
                 <li>Osnovica: {$this->getOsnovica()}</li>
                 <li>Broj godina otplate: {$this->getBrGod()}</li>
                 <li>Tip kredita: {$this->getTip()}</li>
+                <li>Mesecna rata: {$this->mesecnaRata()}</li>
             </ul>
             ";
         }
+
+        /*
+        public function mesecnaRata(){
+            return 100; //Za pocetak da ne pisemo novu formulu
+        }
+        Varijanta kada je osnovna klasa Kredit imala metodu mesecnaRata()
+        */
+
+        public abstract function mesecnaRata();
+        // Apstrakna metoda jer klasa Kredit prelazi u apstraktnu. U ovom slucaju cemo imati podklasu za svaki moguci kredit i nema potrebe ovde da se ista racuna i pise jer ce svaka podmetoda imati svoj nacin racunanja mesecne rate. 
     }
 
 

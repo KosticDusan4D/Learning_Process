@@ -4,40 +4,27 @@
     require_once "ObicanKredit.php";
     require_once "AmortizovanKredit.php";
 
-    Kredit::setDefaultBrGod(-5);
-    Kredit::setPodGodKamata(-25);
+    //15. i 16. SLAJD ZADATAK
 
-    $k1 = new Kredit(-5, 1001, 2, "Kes kredit");
-    $k1->stampajKredit();
+    $krediti = array();
 
-    echo "<hr>";
-    
-    $k2 = new Kredit(10, 2000, -3, "Refinansiranje"); //-3 je prepravio na 5 jer smo gore definisali
-    $k2->stampajKredit();
+    for($i = 0; $i < 6; $i++){
+        $br = rand(0,2);
+        
+        // if($br == 0){
+        //     $krediti[$i] = new Kredit(10, 1000, 1, "Kes kredit");
+        // }
+        if($br == 1){
+            $krediti[$i] = new ObicanKredit(20, 2000, 2);
+        }
+        else{
+            $krediti[$i] = new AmortizovanKredit(30, 3000, 3);
+        }
+    }
 
-    $k3 = new Kredit(15, 1000, 7, "bla bla bla");
-
-    unset($k1, $k2); //ponistava objekat
-
-    echo "<hr>";
-
-    echo "Broj aktivnih kredita je: " . Kredit::getBrojKredita();
-
-    $k = Kredit::DEFAULT_OSNOVICA + 3;
-    echo "<p>Broj godina + 3 = $k</p>";
-
-    echo "<hr>";
-
-    $k4 = new ObicanKredit(35, 8000, 10);
-    $k4->stampajKredit();
-    echo "Mesecna rata je: " . $k4->mesecnaRataObican();
-
-    echo "<hr>";
-
-    $k5 = new AmortizovanKredit(25, 600, 2);
-    $k5->stampajKredit();
-    echo "Mesecna rata je: " . $k5->mesecnaRataAmortizovan();
-    
-
+    foreach($krediti as $kredit){
+        $kredit->stampajKredit();
+        echo "<p>" . get_class($kredit) . "</p>";//Ovo se ja zezam, isprobavam  ugradjenu f-ju
+    }
 
 ?>
