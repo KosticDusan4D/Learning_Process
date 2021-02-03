@@ -28,7 +28,7 @@ CREATE TABLE customers(
     salary DECIMAL(18, 2) DEFAULT 500   (18, 2)- koliko brojeva pre, a koliko posle zareza
 );
 
-#Kreiranje tabele tast u bazi shop
+#Kreiranje tabele tasks u bazi shop
 CREATE TABLE IF NOT EXISTS tasks(
 	task_id INT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
