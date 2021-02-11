@@ -108,3 +108,70 @@ ON kompozicije_has_kompozitori.kompozicije_id = kompozicije.id
 INNER JOIN periodi
 ON kompozicije.periodi_id = periodi.id
 WHERE kompozicije.trajanje = (SELECT MAX(kompozicije.trajanje) FROM kompozicije);
+
+-- 11. Selektovati sve kompozitore čija su dela duža od 5 minuta i kraća od 25 minuta.
+SELECT kompozitori.ime AS 'Ime i', kompozitori.prezime AS 'prezime kompozitora'
+FROM kompozitori
+INNER JOIN kompozicije_has_kompozitori
+ON kompozitori.id = kompozicije_has_kompozitori.kompozitori_id
+INNER JOIN kompozicije
+ON kompozicije_has_kompozitori.kompozicije_id = kompozicije.id
+WHERE kompozicije.trajanje BETWEEN 5 AND 25;
+
+-- 12. Izlistati sve kompozitore čija dela pripadaju klasicizmu.
+SELECT kompozitori.*
+FROM kompozitori
+INNER JOIN kompozicije_has_kompozitori
+ON kompozitori.id = kompozicije_has_kompozitori.kompozitori_id
+INNER JOIN kompozicije
+ON kompozicije_has_kompozitori.kompozicije_id = kompozicije.id
+INNER JOIN periodi
+ON kompozicije.periodi_id = periodi.id
+WHERE periodi.id LIKE 4;
+
+-- 13. Izlistati sve muzičke instrumente (bez ponavljanja) koji sviraju u kompozicijama klasicizma.
+SELECT DISTINCT instrumenti.naziv AS 'Naziv instrumenta koji svira u klasicizmu'
+FROM instrumenti
+INNER JOIN kompozicije_has_instrumenti
+ON instrumenti.id = kompozicije_has_instrumenti.instrumenti_id
+INNER JOIN kompozicije
+ON kompozicije_has_instrumenti.kompozicije_id = kompozicije.id
+INNER JOIN periodi
+ON kompozicije.periodi_id = periodi.id
+WHERE periodi.id LIKE 4;
+
+-- 14. Prebrojati koliko ima muzičkih instrumenata koji sviraju u Betovenovim kompozicijama.
+-- Ne prikazuje lepo za Mocarta i Vivaldija, okrece im vrednosti
+-- UPDATE radi nego meni nije baza ok
+SELECT COUNT(instrumenti.id) AS 'Broj instrumenata u Betovenovim kompozicijama'
+FROM instrumenti
+INNER JOIN kompozicije_has_instrumenti
+ON instrumenti.id = kompozicije_has_instrumenti.instrumenti_id
+INNER JOIN kompozicije
+ON kompozicije_has_instrumenti.kompozicije_id = kompozicije.id
+INNER JOIN kompozicije_has_kompozitori
+ON kompozicije.id = kompozicije_has_kompozitori.kompozicije_id
+INNER JOIN kompozitori
+ON kompozicije_has_kompozitori.kompozitori_id = kompozitori.id
+WHERE kompozitori.prezime LIKE '%Bethoven%';
+
+-- 15. Prebrojati koliko kompozicija je komponovao kompozitor Ludvig van Betoven
+SELECT COUNT(kompozicije.id) AS 'Broj kompozicija koje je komponovao Bethoven'
+FROM kompozicije
+INNER JOIN kompozicije_has_kompozitori
+ON kompozicije.id = kompozicije_has_kompozitori.kompozicije_id
+INNER JOIN kompozitori
+ON kompozicije_has_kompozitori.kompozitori_id = kompozitori.id
+WHERE kompozitori.prezime LIKE '%Bethoven%';
+
+-- 16. Prebrojati koliko različitih instrumenata svira u unetim kompozicijama
+SELECT COUNT(DISTINCT instrumenti.id) AS 'Broj razlicitih instrumenata u svim kompozicijama'
+FROM instrumenti
+INNER JOIN kompozicije_has_instrumenti
+ON instrumenti.id = kompozicije_has_instrumenti.instrumenti_id
+INNER JOIN kompozicije
+ON kompozicije_has_instrumenti.kompozicije_id = kompozicije.id
+INNER JOIN kompozicije_has_kompozitori
+ON kompozicije.id = kompozicije_has_kompozitori.kompozicije_id
+INNER JOIN kompozitori
+ON kompozicije_has_kompozitori.kompozitori_id = kompozitori.id;
