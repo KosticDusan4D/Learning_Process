@@ -52,8 +52,8 @@ VALUES
 (1, 3),
 (2, 1),
 (3, 5),
-(5, 7),
-(6, 8);
+(5, 8),
+(6, 7);
 
 INSERT INTO `kompozicije_has_instrumenti`(`kompozicije_id`, `instrumenti_id`) 
 VALUES 

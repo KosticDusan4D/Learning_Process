@@ -39,7 +39,7 @@
                 <th>Datum rodjenja</th>
             </tr>";
             foreach($result as $row){
-                echo "<tr>";
+                echo "<tr class='red_slova'>";
                 echo "<td>" . $row['ime'] . "</td>";
                 echo "<td>" . $row['prezime'] . "</td>";
                 echo "<td>" . $row['visina'] . "cm</td>";

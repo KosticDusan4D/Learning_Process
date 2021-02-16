@@ -1,0 +1,83 @@
+body{
+    background-color: rgb(215, 215, 250)
+}
+
+.center{
+    text-align: center;
+}
+
+table, th, td{
+    text-align: center;
+    padding: 5px;
+    border: 2px grey solid;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: grey;
+    color: rgba(255, 255, 255, 0.884);
+}
+
+#text_left{
+    text-align: left;
+}
+
+table{
+    overflow: hidden;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    text-align: center;
+}
+
+/* Nisam hteo da postignem da celu kolonu obelezava, vec samo do polja na kom se nalazi mis, ali kako mi je google rekao ovo je najvise dokle moze da ide CSS, za moju ideju je potreban JavaScript. Takodje style deluje malo sturo bas iz tog razloga jer za ovaj hover stoji z-index: -1 i onda gubi smisao ako bilo kakvu pozadinu ubacim */
+tr:hover{
+    background-color: rgb(235, 235, 103);
+}
+  
+td, th{
+    position: relative;
+}
+td:hover::after,
+th:hover::after{
+    content: "";
+    position: absolute;
+    background-color: rgb(152, 201, 62);
+    left: 0;
+    top: -5000px;
+    height: 10000px;
+    width: 100%;
+    z-index: -1;
+}
+
+.warning{
+    color: red;
+    font-size: 75px;
+    font-weight: bold;
+}
+
+td{
+    color: rgb(59, 53, 53);
+}
+
+a{
+    background-color: rgba(0, 0, 255, 0.616);
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+  
+a:hover{
+    background-color: #555;
+}
+  
+a:active{
+    background-color: black;
+}
+  
+a:visited{
+    background-color: #ccc;
+}
