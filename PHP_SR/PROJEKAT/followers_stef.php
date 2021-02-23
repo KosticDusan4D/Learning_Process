@@ -1,5 +1,9 @@
 <?php
     require_once "header.php";
+
+    if(empty($_SESSION['id'])){
+        header("Location: login.php");
+    }
 ?>
     <div class="width d-flex justify-content-center">
         <table class="table table-dark table-hover">

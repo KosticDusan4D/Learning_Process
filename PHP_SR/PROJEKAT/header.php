@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="followers.php">Friends</a>
@@ -29,7 +29,7 @@
                     <a class="nav-link" href="#">Change password</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
         </ul>
         </nav>
