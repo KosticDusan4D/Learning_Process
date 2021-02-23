@@ -20,12 +20,12 @@
     <br>
     <section>   
     <?php
-            $q = "SELECT DISTINCT prezime AS 'slovo'
+            $q = "SELECT DISTINCT prezime AS 'prezime'
             FROM pacijenti ORDER BY prezime";
             $result = $conn->query($q);
             if($result->num_rows){
                 foreach($result as $row){
-                    echo "<a href='#". $row['slovo']. "'>". $row['slovo']. "</a>";
+                    echo "<a href='#". $row['prezime']. "'>". $row['prezime']. "</a>";
                 }
             }
             else{
@@ -37,9 +37,9 @@
         <?php
             if($result->num_rows){
                 foreach($result as $row){
-                    $prvoSlovo = $row['slovo'];
+                    $prezime = $row['prezime'];
                     //Prikazi sve pacijente cije prezime pocinje na $prvoSlovo
-                    echo "<h3 class='center' id='$prvoSlovo'>$prvoSlovo</h3>";
+                    echo "<h3 class='center' id='$prezime'>$prezime</h3>";
                     echo "<table class='tabela'>";
                     echo "<tr>
                     <th id='text_left'>Ime</th>
@@ -48,9 +48,18 @@
                     <th>Tezina</th>
                     <th>Datum rodjenja</th>
                     </tr>";
-                    $q2 = "SELECT * FROM pacijenti WHERE prezime LIKE'" . $prvoSlovo . "%' ORDER BY ime";
+                    $q2 = "SELECT *, (SELECT AVG(visina) FROM pacijenti WHERE prezime LIKE '%$prezime%') AS 'prosVis', tezina, (SELECT AVG(tezina) FROM pacijenti WHERE prezime LIKE '%$prezime%') AS 'prosTez'
+                    FROM pacijenti WHERE prezime LIKE '%$prezime%' ORDER BY ime;";
                     $sviPacijenti = $conn->query($q2);
+                    $sumaVis1 = 0;
+                    $sumaTez1 = 0;
+                    $brojPac = 0;
                     foreach($sviPacijenti as $pac){
+                        $sumaVis1 += $pac['visina'];
+                        $sumaTez1 += $pac['tezina'];
+                        $brojPac++;
+                        $prosVis1 = $pac['prosVis'];
+                        $prosTez1 = $pac['prosTez'];
                         echo "<tr class='red_slova'>";
                         echo "<td id='text_left'>" . $pac['ime'] . "</td>";
                         echo "<td>" . $pac['prezime'] . "</td>";
@@ -59,6 +68,12 @@
                         echo "<td>" . $pac['datum_rodjenja'] . "</td>";
                         echo "</tr>";
                     }
+                    $prosVis = $pac['prosVis'];
+                    $prosTez = $pac['prosTez'];
+                    $prosVis1 = $sumaVis1 / $brojPac;
+                    $prosTez1 = $sumaTez1 / $brojPac;
+                    echo "<tr><td colspan='5'>Query: Prosecna visina: $prosVis | Prosecna tezina: $prosTez</td></tr>";
+                    echo "<tr><td colspan='5'>PHP: Prosecna visina: $prosVis1 | Prosecna tezina: $prosTez1</td></tr>";
                     echo "</table>";
                 }
                 

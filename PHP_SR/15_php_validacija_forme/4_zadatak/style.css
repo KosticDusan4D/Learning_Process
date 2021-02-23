@@ -1,0 +1,21 @@
+body{
+    background-color: silver;
+}
+
+.error{
+    color: red;
+}
+.success{
+    color: green;
+}
+.muski{
+    color: blue;
+}
+
+.zenski{
+    color: red;
+}
+
+.drugo{
+    color: yellow;
+}
