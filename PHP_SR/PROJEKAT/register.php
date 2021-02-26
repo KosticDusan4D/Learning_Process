@@ -1,5 +1,5 @@
 <?php
-    require_once "header.php";
+    require_once "connection.php";
     require_once "validation.php";
     
     $validated = true;
@@ -76,78 +76,98 @@
         $username = $conn->real_escape_string($username);
         $password = $conn->real_escape_string($password);
         $retypePassword = $conn->real_escape_string($retypePassword);
+
+        if($validated){
+            $q1 = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
+            $conn->query($q1);
+                
+            $q2 = "SELECT id FROM users WHERE `username` LIKE '$username';";
+            $result = $conn->query($q2);
+            if($result->num_rows){
+                foreach($result as $row){
+                    $user_id = $row['id'];
+                }
+            }
+
+            $q3 = "INSERT INTO profiles (name, surname, gender, dob, user_id) VALUES ('$name', '$surname', '$gender', '$dob', '$user_id');";
+            if($conn->query($q3)){
+                header('Location: login.php');
+            }
+        }
     }
 ?>
-<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <br>
+    <br>
     <form action="#" method="POST" class="font">
-        <p>
+        <p class="form-group">
             <label for="">Name:</label>
-            <input type="text" name="name" id="" value="<?php echo $name; ?>">
+            <input type="text" class="form-control" name="name" id="" value="<?php echo $name; ?>">
             <span class="error">*<?php echo $nameErr; ?></span>
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Surname:</label>
-            <input type="text" name="surname" id="" value="<?php echo $surname; ?>">
+            <input type="text" class="form-control" name="surname" id="" value="<?php echo $surname; ?>">
             <span class="error">*<?php echo $surnameErr; ?></span>
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Gender:</label>
-            <input type="radio" name="gender" id="" value="m">Male
-            <input type="radio" name="gender" id="" value="f">Female
-            <input type="radio" name="gender" id="" value="o" checked>Other
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="gender" value="m">Male
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="gender" value="f">Female
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="gender" value="o" checked>Other
+                </label>
+            </div>
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Date of birth:</label>
-            <input type="date" name="dob" min="1900-01-01" id="" value="<?php echo $dob; ?>">
+            <input type="date" class="form-control" name="dob" min="1900-01-01" id="" value="<?php echo $dob; ?>">
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Userame:</label>
-            <input type="text" name="username" id="">
+            <input type="text" class="form-control" name="username" id="">
             <span class="error">*<?php echo $usernameErr; ?></span>
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Password:</label>
-            <input type="password" name="password" id="">
+            <input type="password" class="form-control" name="password" id="">
             <span class="error">*<?php echo $passwordErr; ?></span>
         </p>
-        <p>
+        <p class="form-group">
             <label for="">Retype password:</label>
-            <input type="password" name="retypePassword" id="">
+            <input type="password" class="form-control" name="retypePassword" id="">
             <span class="error">*<?php echo $retypePasswordErr; ?></span>
         </p>
-        <p>
-            <input type="submit" name="submit" value="Submit">
-            <input type="reset" name="reset" value="Reset">
+        <p class="form-group">
+            <input type="submit" class="form-control btn btn-primary" name="submit" value="Submit">
+        </p>
+        <p class="form-group">
+            <input type="reset" class="form-control btn btn-dark" name="reset" value="Reset">
         </p>
     </form>
 
-    <p class="font">
-        <?php 
-            if($validated && !empty($name)){
-                $q1 = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
-                $conn->query($q1);
-                    
-                $q2 = "SELECT id FROM users WHERE `username` LIKE '$username';";
-                $result = $conn->query($q2);
-                if($result->num_rows){
-                    foreach($result as $row){
-                        $user_id = $row['id'];
-                    }
-                }
-
-                $q3 = "INSERT INTO profiles (name, surname, gender, dob, user_id) VALUES ('$name', '$surname', '$gender', '$dob', '$user_id');";
-                if($conn->query($q3)){
-                    echo "***Successful registration";
-                }
-            }
-            $name = $surname = $gender = $dob = $username = $password = $retypePassword = "";
-            $nameErr = $surnameErr = $dobErr = $usernameErr = $passwordErr = $retypePasswordErr = "";
-        ?>
-    </p>
-
-
-
-
-
-    </body>
-</html>
+    
+<?php 
+    $name = $surname = $gender = $dob = $username = $password = $retypePassword = "";
+    $nameErr = $surnameErr = $dobErr = $usernameErr = $passwordErr = $retypePasswordErr = "";
+    require_once "footer.php";
+?>

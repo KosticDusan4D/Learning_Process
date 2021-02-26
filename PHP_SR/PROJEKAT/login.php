@@ -21,7 +21,11 @@
         }
 
         if($validated){
-            $q = "SELECT * FROM users WHERE username = '$username'";
+            $q = "SELECT users.id AS 'id', users.password AS 'password', profiles.name AS 'name', profiles.surname AS 'surname'
+            FROM users
+            INNER JOIN profiles
+            ON users.id = profiles.user_id
+            WHERE username = '$username'";
             $result = $conn->query($q);
             if($result->num_rows == 0){
                 $usernameError = "Invalid username";
@@ -35,8 +39,9 @@
                 else{
                     //OVDE SE RADI LOGOVANJE - SESIJA
                     $_SESSION['id'] = $row['id'];
-                    // $_SESSION['full_name'] = "ZA DOMACI";
-                    header('Location: followers_stef.php');
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['surname'] = $row['surname'];
+                    header('Location: followers.php');
                 }
             }
         }
@@ -57,15 +62,23 @@
     <form class="font" action="" method="POST">
     <br>
     <br>
+    <p class="form-group">
         <label for="username">Username: </label>
-        <input type="text" name="username" id="username">
+        <input type="text" class="form-control" name="username" id="username">
         <span class="error"><?php echo $usernameError ?></span>
+    </p>
         <br>
+    <p class="form-group">
         <label for="password">Password: </label>
-        <input type="password" name="password" id="password">
+        <input type="password"  class="form-control" name="password" id="password">
         <span class="error"><?php echo $passwordError ?></span>
+    </p>
         <br>
-        <input type="submit" value="Log in!">
+        <input type="submit" class="form-control btn btn-primary" name="submit" value="Log in!">
+    <p class="redirectLink">
+        If you don't have account, please <a href="register.php">register!</a>
+    </p>
     </form>
-</body>
-</html>
+<?php
+    require_once "footer.php";
+?>

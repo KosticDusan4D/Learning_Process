@@ -1,13 +1,9 @@
 <?php
     session_start();
     require_once "connection.php";
-    $who_logged = "";
     if(isset($_SESSION['id'])){
-        $name = $_SESSION['name'];
-        $surname = $_SESSION['surname'];
-        $who_logged = "<li class='nav-item'><a class='nav-link' href='#'>Hello, $name $surname</a></li>";
+        header('Location: followers.php');
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +19,6 @@
     <div><!-- UBACI RESPONSIVE OVDE PREKO BOOTSTRAP-a  -->
         <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
             <ul class="navbar-nav">
-                <?php echo $who_logged; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
@@ -37,8 +32,16 @@
                     <a class="nav-link" href="changePass.php">Change password</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="register.php">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Login</a>
                 </li>
         </ul>
         </nav>
     </div>
+
+    <h1 class="indexh1">Welcome</h1>
+<?php
+    require_once "footer.php";
+?>

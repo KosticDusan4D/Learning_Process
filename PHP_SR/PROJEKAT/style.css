@@ -19,6 +19,10 @@ nav ul li a:hover{
     font-weight: bold;
     color: blue;
     -webkit-text-stroke: 0.15px orangered;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
 }
 
 .error{
@@ -28,12 +32,34 @@ nav ul li a:hover{
 }
 
 .width{
-    margin: auto;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
     width: 50%;
     text-align: center;
 }
 
-table{
-    margin-top: 30px;
+.button{
+    width: 100px;
+}
+
+.redirectLink a{
+    color: red;
+    font-weight: bold;
+    -webkit-text-stroke: 0.15px black;
+}
+
+.indexh1{
+    font-weight: bold;
+    color: blue;
+    -webkit-text-stroke: 0.5px orangered;
+    font-size: 100px;
     text-align: center;
+    margin-top: 150px
+}
+
+footer{
+    color: rgb(236, 227, 227);
+    font-size: 20px;
 }
