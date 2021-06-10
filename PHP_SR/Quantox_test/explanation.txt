@@ -1,0 +1,11 @@
+QUANTOX
+
+Dusan Kostic - PHP Internship test
+
+These are some notes I want to include into test.
+
+- Just make on your localhost database and user named as you like, after that in file "connection.php" make changes for your username, password and database. After that run a script just to check if the connection is on.
+
+- I've exported base that I used in the process so that you can see everything easier. Or I included "database.php" which you can run to make table, after that you can fill table on Register page.
+
+- Security: I know that md5 for password is crackable by just copying to google, but I haven't worked yet with password_hash() in PHP, although I learned that it is much safer way.
