@@ -6,7 +6,7 @@ copy.addEventListener('copy', () => {
 
 const box = document.querySelector('.box');
 
-box.addEventListener('mousemove', e => {
+box.addEventListener('mousedown', e => {
     // // console.log(e);
     // console.log(e.offsetX, e.offsetY);
     box.textContent = `x pox - ${e.offsetX}, y pos - ${e.offsetY}`;
